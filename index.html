@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        class Persona {
+            constructor(nombre, apellido, altura){
+                this.nombre = nombre
+                this.apellido = apellido
+                this.altura = altura
+            }
+            saludar(fn){
+            console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
+            if(fn){
+                    fn(this.nombre, this.apellido)
+                }
+            }
+             soyAlto(){
+            return this.altura > 1.8
+            }
+        }
+    
+
+
+        class Desarrollador extends Persona {
+            constructor(nombre, apellido, altura){
+                super(nombre, apellido, altura)
+            }
+            saludar(fn){
+                var {nombre, apellido} = this
+                console.log(`HOla me llamo ${nombre} ${apellido} y soy desarrollador`)
+                if(fn){
+                    fn(nombre, apellido, true)
+                }
+            }
+
+        }
+
+    
+
+        function responderSaludo(nombre, apellido, esDev){
+            console.log(`Buen día ${nombre} ${apellido}`)
+            if (esDev){
+                console.log(`Ah mirá, no sabía que eras desarrollador`)
+            }
+        }
+
+        var oscar = new Persona('Oscar', 'de La Rosa', 1.7)
+        var eduardo = new Desarrollador('Eduardo', 'Apellido', 1.75)
+
+
+        oscar.saludar(responderSaludo)
+        eduardo.saludar(responderSaludo)
+        oscar.saludar()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
